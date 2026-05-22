@@ -47,7 +47,7 @@ class NationalityService:
             self.fetch(player_id)
         return {int(pid): self._cache[int(pid)] for pid in player_ids if int(pid) in self._cache}
 
-    def enrich_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
+    def enrich_dataframe(self, df: pd.DataFrame, fetch_missing: bool = False) -> pd.DataFrame:
         if df.empty or "player_id" not in df.columns:
             return df
 
@@ -56,7 +56,8 @@ class NationalityService:
             result = result.drop(columns=["nationality"])
 
         player_ids = result["player_id"].dropna().astype(int).unique().tolist()
-        self.ensure(player_ids)
+        if fetch_missing:
+            self.ensure(player_ids)
 
         nationality_map = {
             int(pid): self._cache.get(int(pid), "Unknown")
