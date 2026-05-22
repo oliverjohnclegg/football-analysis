@@ -27,6 +27,15 @@ from src.profiles.fletcher_winger import FletcherWingerProfile
 from src.profiles.fletcher_false_9 import FletcherFalseNineProfile
 from src.profiles.fletcher_target_9 import FletcherTargetNineProfile
 
+from src.profiles.tuchel_goalkeeper import TuchelGoalkeeperProfile
+from src.profiles.tuchel_central_cb import TuchelCentralCBProfile
+from src.profiles.tuchel_wide_cb import TuchelWideCBProfile
+from src.profiles.tuchel_wing_back import TuchelWingBackProfile
+from src.profiles.tuchel_primary_6 import TuchelPrimarySixProfile
+from src.profiles.tuchel_secondary_6_8 import TuchelSecondarySixEightProfile
+from src.profiles.tuchel_half_space_10 import TuchelHalfSpaceTenProfile
+from src.profiles.tuchel_centre_forward import TuchelCentreForwardProfile
+
 PROFILES = {
     "alonso/goalkeeper": AlonsoGoalkeeperProfile,
     "alonso/central_cb": AlonsoCentralCBProfile,
@@ -54,4 +63,12 @@ PROFILES = {
     "fletcher/winger": FletcherWingerProfile,
     "fletcher/false_9": FletcherFalseNineProfile,
     "fletcher/target_9": FletcherTargetNineProfile,
+    "tuchel/goalkeeper": TuchelGoalkeeperProfile,
+    "tuchel/central_cb": TuchelCentralCBProfile,
+    "tuchel/wide_cb": TuchelWideCBProfile,
+    "tuchel/wing_back": TuchelWingBackProfile,
+    "tuchel/primary_6": TuchelPrimarySixProfile,
+    "tuchel/secondary_6_8": TuchelSecondarySixEightProfile,
+    "tuchel/half_space_10": TuchelHalfSpaceTenProfile,
+    "tuchel/centre_forward": TuchelCentreForwardProfile,
 }
