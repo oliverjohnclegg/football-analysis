@@ -45,7 +45,12 @@ def render_player_details(row: pd.Series, profile_cls=None):
     """
     # Header Identity
     st.markdown(f'<div class="player-name-main">{row["player"]}</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="player-club-sub">{row.get("team", "Unknown")} • {row.get("league", "Unknown")}</div>', unsafe_allow_html=True)
+    nationality = row.get("nationality", "Unknown")
+    st.markdown(
+        f'<div class="player-club-sub">{row.get("team", "Unknown")} • '
+        f'{row.get("league", "Unknown")} • {nationality}</div>',
+        unsafe_allow_html=True,
+    )
     
     tier = row.get("composite_score_tier", "C")
     score = row.get("composite_score", 0.0)

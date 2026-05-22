@@ -4,6 +4,7 @@ import pandas as pd
 import tls_requests
 
 from src.config import FOTMOB_LEAGUES, FOTMOB_STATS, MINIMUM_MINUTES, OUTPUT_DIR
+from src.nationality_service import NationalityService
 
 BASE_API = "https://www.fotmob.com/api"
 SEARCH_API = "https://www.fotmob.com/api/data/search/suggest"
