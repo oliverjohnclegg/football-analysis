@@ -4,6 +4,7 @@ import pandas as pd
 import tls_requests
 
 from src.config import FOTMOB_LEAGUES, FOTMOB_STATS, MINIMUM_MINUTES, OUTPUT_DIR
+from src.nationality_service import NationalityService
 
 BASE_API = "https://www.fotmob.com/api"
 SEARCH_API = "https://www.fotmob.com/api/data/search/suggest"
@@ -25,6 +26,7 @@ class FotMobFetcher:
     def __init__(self):
         self._session = tls_requests.Client(headers=HEADERS)
         self._tournament_ids: dict[str, int] = {}
+        self._nationality_service = NationalityService(session=self._session)
 
     def fetch_all(self, season: str, use_cache: bool = False) -> pd.DataFrame:
         cache = _cache_path(season)
@@ -42,6 +44,7 @@ class FotMobFetcher:
             how="left",
         )
         merged = merged[merged["minutes_played"] >= MINIMUM_MINUTES]
+        merged = self._nationality_service.enrich_dataframe(merged, fetch_missing=True)
 
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
         merged.to_csv(cache, index=False)
@@ -215,7 +218,7 @@ class FotMobFetcher:
 
         position = self._fetch_player_position(team_id, player_id)
         merged["position"] = position
-        return merged
+        return self._nationality_service.enrich_dataframe(merged, fetch_missing=True)
 
     def _fetch_player_position(self, team_id: int, player_id: int) -> str:
         try:

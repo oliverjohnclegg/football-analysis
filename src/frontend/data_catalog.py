@@ -3,6 +3,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.config import OUTPUT_DIR
+from src.nationality_service import NationalityService
 from src.profiles import PROFILES
 
 def get_managers() -> list[str]:

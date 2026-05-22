@@ -39,5 +39,6 @@ def build_ui_view_model(df: pd.DataFrame, score_col: str, pillar_cols: list[str]
     view_df["_Raw_Tier"] = df.get(f"{score_col}_tier", "C").values
     view_df["_Has_Primary"] = df.get("has_primary_season", True).values
     view_df["_Club_League"] = view_df["Team"] + " " + view_df["League"]
+    view_df["_Nationality"] = view_df["Nationality"]
     
     return view_df, df

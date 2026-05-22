@@ -41,7 +41,9 @@ def render_comparison_grid(view_df: pd.DataFrame, pillar_cols: list[str]):
         "_Raw_Tier": None,  # Hide internal filter column
         "_Has_Primary": None, # Hide internal filter column
         "_Club_League": st.column_config.TextColumn("Club & League", width="medium"),
-        "Team": None, # Combined into _Club_League
+        "Nationality": st.column_config.TextColumn("Nationality", width="small"),
+        "_Nationality": None,
+        "Team": None,
         "League": None,
     }
 
